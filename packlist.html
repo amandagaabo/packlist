@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+<meta charset="utf-8">
+
+<title>Packlist</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href="style.css" rel="stylesheet">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="packlist.js"></script>
+
+</head>
+
+<body>
+
+
+<!-- Page Header -->
+<div class='jumbotron'>
+  <div class='container'>
+      <h1>Packlist</h1>
+  </div>
+</div>
+
+<!-- Main Conent -->
+<div class='container'>
+
+<!-- Select trip categories -->
+  <h3>Select trip catagory or categories</h3>
+
+  <div class='trip-categories'>
+    <label class="checkbox-inline">
+      <input type='checkbox' id='beach' value='Beach'> Beach
+    </label>
+    <label class="checkbox-inline">
+      <input type="checkbox" id='camp' value="Camp"> Camp
+    </label>
+    <label class="checkbox-inline">
+      <input type="checkbox" id="climb" value="Climb"> Climb
+    </label>
+    <label class="checkbox-inline">
+      <input type="checkbox" id="hike" value="Hike"> Hike
+    </label>
+    <label class="checkbox-inline">
+      <input type="checkbox" id="ski" value="Ski"> Ski
+    </label>
+  </div>
+
+
+<!-- Click button to set list -->
+  <div>
+    <button type="button" class="btn btn-default" id="show-packlist">Show Packlist</button>
+    <button type="button" class="btn btn-default" id="reset">Reset</button>
+  </div>
+
+<!-- List of items to pack -->
+  <div>
+    <p>Items to Pack</p>
+    <ul id='myList'></ul>
+  </div>
+
+
+</div>
+
+
+<!-- Footer -->
+<footer>
+  <div class='container'>
+  </div>
+</footer>
+
+</body>
+</html>
