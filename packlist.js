@@ -8,8 +8,6 @@ $(document).ready(function(){
 // Hike
 // Ski
 
-
-
 var allItems = [
   { item: 'Toothbrush', categories: ['All'] },
   { item: 'Toothpaste', categories: ['All'] },
@@ -39,12 +37,43 @@ var allItems = [
 
 
 
-// add all items to packlist on click
+
+// add items to packlist on click
 $('#show-packlist').click(function(){
-  allItems.forEach(function (collection) {
-    $('#myList').append('<li><input type="checkbox">'+ ' ' + collection.item + '</li>');
+
+  var selectedCategories = ['All'];
+
+  //determine selected categories
+  $('.trip-categories input').each(function() {
+    if($(this).prop('checked')) {
+      selectedCategories.push($(this).val());
+    }
   });
-});
+
+  console.log(selectedCategories);
+
+  //filter and return new array (filteredItems) with selected categories, returns all items that are true
+  var filteredItems = _.filter(allItems, function(item) {
+    //find items with shared categories, returns array of intersection, if array exists then they intersect
+    var intersection = _.intersection(item.categories,selectedCategories);
+    if (intersection.length > 0){
+      return true;
+    }
+  });
+
+  console.log(filteredItems);
+
+  //clear the list
+  $('#myList li').remove();
+
+  //populate list with filtered array
+  filteredItems.forEach(function (array) {
+    $('#myList').append('<li><input type="checkbox">'+ ' ' + array.item + '</li>');
+  });
+
+
+}); // end click generate list
+
 
 
 
@@ -53,6 +82,14 @@ $('#reset').click(function(){
   $('#myList li').remove();
   $('.trip-categories input').prop('checked', false);
 });
+
+
+
+
+
+
+
+
 
 
 
