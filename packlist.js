@@ -83,15 +83,4 @@ $('#reset').click(function(){
   $('.trip-categories input').prop('checked', false);
 });
 
-
-
-
-
-
-
-
-
-
-
-
 });  //end document ready
