@@ -11,6 +11,13 @@ $(document).ready(function(){
 var allItems = [
   { item: 'Toothbrush', categories: ['All'] },
   { item: 'Toothpaste', categories: ['All'] },
+  { item: 'Floss', categories: ['All'] },
+  { item: 'Deoderant', categories: ['All'] },
+  { item: 'Tops', categories: ['All'] },
+  { item: 'Bottoms', categories: ['All'] },
+  { item: 'Socks', categories: ['All'] },
+  { item: 'Underware', categories: ['All'] },
+  { item: 'Pajamas', categories: ['All'] },
   { item: 'Water bottle', categories: ['All'] },
 
   { item: 'Snorkel gear', categories: ['Beach'] },
@@ -21,6 +28,8 @@ var allItems = [
 
   { item: 'Harness', categories: ['Climb'] },
   { item: 'Rope', categories: ['Climb'] },
+  { item: 'Gear', categories: ['Climb'] },
+  { item: 'Helmet', categories: ['Climb'] },
 
   { item: 'Hiking pack', categories: ['Hike'] },
   { item: 'Hiking shoes', categories: ['Hike'] },
@@ -31,10 +40,10 @@ var allItems = [
 
   { item: 'Snack bars', categories: ['Camp', 'Climb', 'Hike', 'Ski'] },
   { item: 'Puffy', categories: ['Camp','Hike','Ski'] },
-  { item: 'Swim suit', categories: ['Beach', 'Ski'] }
+  { item: 'Swim suit', categories: ['Beach', 'Ski'] },
+  { item: 'Rain jacket', categories: ['Camp', 'Climb', 'Hike'] }
 
 ];
-
 
 
 
@@ -66,21 +75,35 @@ $('#show-packlist').click(function(){
   //clear the list
   $('#myList li').remove();
 
+  //show header
+  $('#list-header').removeClass();
+
   //populate list with filtered array
   filteredItems.forEach(function (array) {
     $('#myList').append('<li><input type="checkbox">'+ ' ' + array.item + '</li>');
   });
 
-
-}); // end click generate list
-
+}); // end click to generate list
 
 
+// strikethrough and move items when checked
+$('#myList').on('click', 'input:checkbox', function(){
+   $(this).parent().toggleClass('packed', this.checked);
+   $(this).parent().appendTo('#myList');
+});
 
-// remove all items from packlist on click
+
+
+
+// remove all items from packlist on reset click
 $('#reset').click(function(){
+  $('#list-header').addClass('hidden');
   $('#myList li').remove();
   $('.trip-categories input').prop('checked', false);
 });
+
+
+
+
 
 });  //end document ready
