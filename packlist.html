@@ -25,27 +25,38 @@
 </div>
 
 <!-- Main Conent -->
-<div class='container'>
+<div class='container' id='main-content'>
 
 <!-- Select trip categories -->
   <h3>Select trip catagory or categories</h3>
 
   <div class='trip-categories'>
-    <label class="checkbox-inline">
-      <input type='checkbox' id='beach' value='Beach'> Beach
-    </label>
-    <label class="checkbox-inline">
-      <input type="checkbox" id='camp' value="Camp"> Camp
-    </label>
-    <label class="checkbox-inline">
-      <input type="checkbox" id="climb" value="Climb"> Climb
-    </label>
-    <label class="checkbox-inline">
-      <input type="checkbox" id="hike" value="Hike"> Hike
-    </label>
-    <label class="checkbox-inline">
-      <input type="checkbox" id="ski" value="Ski"> Ski
-    </label>
+
+    <div class="checkbox checkbox-inline">
+      <input type="checkbox" id="beach" value='Beach'>
+          <label for="beach">Beach</label>
+    </div>
+
+    <div class="checkbox checkbox-inline">
+      <input type="checkbox" id="camp" value='Camp'>
+          <label for="camp">Camp</label>
+    </div>
+
+    <div class="checkbox checkbox-inline">
+      <input type="checkbox" id="climb" value='Climb'>
+          <label for="climb">Climb</label>
+    </div>
+
+    <div class="checkbox checkbox-inline">
+      <input type="checkbox" id="hike" value='Hike'>
+          <label for="hike">Hike</label>
+    </div>
+
+    <div class="checkbox checkbox-inline">
+      <input type="checkbox" id="ski" value='Ski'>
+          <label for="ski">Ski</label>
+    </div>
+
   </div>
 
 
@@ -55,14 +66,20 @@
     <button type="button" class="btn btn-default" id="reset">Reset</button>
   </div>
 
+
 <!-- List of items to pack -->
-  <div>
-    <h3 class='hidden' id='list-header'>Items to Pack</h3>
-    <ul id='myList'></ul>
-  </div>
+  <h3 class='hidden' id='list-header'>Items to Pack</h3>
+    <div class='checkbox' id='myList'>
+    </div>
+
+
+
 
 
 </div>
+
+
+
 
 
 <!-- Footer -->

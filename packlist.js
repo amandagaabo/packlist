@@ -46,20 +46,20 @@ var allItems = [
 ];
 
 
-
 // add items to packlist on click
 $('#show-packlist').click(function(){
 
+  //determine selected categories, should contain All even though all is not an option
   var selectedCategories = ['All'];
 
-  //determine selected categories
   $('.trip-categories input').each(function() {
     if($(this).prop('checked')) {
       selectedCategories.push($(this).val());
     }
   });
+  // check selected categories
+  // console.log(selectedCategories);
 
-  console.log(selectedCategories);
 
   //filter and return new array (filteredItems) with selected categories, returns all items that are true
   var filteredItems = _.filter(allItems, function(item) {
@@ -69,36 +69,40 @@ $('#show-packlist').click(function(){
       return true;
     }
   });
+  //check filter
+  // console.log(filteredItems);
 
-  console.log(filteredItems);
 
   //clear the list
-  $('#myList li').remove();
+  $('#myList').html('');
 
   //show header
   $('#list-header').removeClass();
 
   //populate list with filtered array
   filteredItems.forEach(function (array) {
-    $('#myList').append('<li><input type="checkbox">'+ ' ' + array.item + '</li>');
+    $('#myList').append('<div class="checkbox"><input type="checkbox" id='+ array.item + '><label for='+ array.item+ '>' + array.item + '</label></div>');
   });
 
 }); // end click to generate list
 
 
-// strikethrough and move items when checked
+// strikethrough and move items when checked, alert when everything is packed
 $('#myList').on('click', 'input:checkbox', function(){
    $(this).parent().toggleClass('packed', this.checked);
    $(this).parent().appendTo('#myList');
-});
 
+   if ($('#myList input:checked').length == $('#myList input').length) {
+     alert('Everything is packed!');
+   }
+});
 
 
 
 // remove all items from packlist on reset click
 $('#reset').click(function(){
   $('#list-header').addClass('hidden');
-  $('#myList li').remove();
+  $('#myList').html('');
   $('.trip-categories input').prop('checked', false);
 });
 

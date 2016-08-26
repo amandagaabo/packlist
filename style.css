@@ -4,32 +4,42 @@ body {
 }
 
 .jumbotron {
-   padding-top: 15px;
-   padding-bottom: 15px;
+   padding-top: 20px;
+   padding-bottom: 20px;
    color: white;
    background-color: #4527A0;
 }
+
+.checkbox {
+  margin-top: 0;
+  margin-right: 0;
+}
+
+.checkbox label {
+  padding-left: 0;
+  font-weight: 0;
+}
+
 
 h3 {
   margin-top: 0px;
   margin-bottom: 10px;
 }
 
-.trip-categories {
+.btn {
+  margin-bottom: 40px;
   margin-top: 10px;
-  margin-bottom: 10px;
 }
 
-.btn {
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
 
 #myList {
   margin: 0;
+  padding-left: 40px;
   list-style: none;
   float: left;
 }
+
+
 
 .packed {
   color: #85929E;
