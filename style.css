@@ -35,13 +35,10 @@ h3 {
 #myList {
   margin: 0;
   padding-left: 40px;
-  list-style: none;
-  float: left;
 }
 
 
-
-.packed {
+.packed label {
   color: #85929E;
   text-decoration: line-through;
 }

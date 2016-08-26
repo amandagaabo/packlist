@@ -1,5 +1,15 @@
 $(document).ready(function(){
 
+// localStorage.clear();
+
+// Check local storage and load list if it exists:
+if(localStorage.getItem('newkey')) {
+  var savedPage = JSON.parse(localStorage.getItem('newkey'));
+  $('#myList').html(savedPage);
+  $('#list-header').removeClass();
+}
+
+
 /// All categories: ///
 // All
 // Beach
@@ -7,6 +17,7 @@ $(document).ready(function(){
 // Climb
 // Hike
 // Ski
+// International
 
 var allItems = [
   { item: 'Toothbrush', categories: ['All'] },
@@ -37,6 +48,8 @@ var allItems = [
   { item: 'Skis', categories: ['Ski'] },
   { item: 'Ski poles', categories: ['Ski'] },
 
+  { item: 'Passport', categories: ['International'] },
+  { item: 'Debit card', categories: ['International'] },
 
   { item: 'Snack bars', categories: ['Camp', 'Climb', 'Hike', 'Ski'] },
   { item: 'Puffy', categories: ['Camp','Hike','Ski'] },
@@ -84,7 +97,13 @@ $('#show-packlist').click(function(){
     $('#myList').append('<div class="checkbox"><input type="checkbox" id='+ array.item + '><label for='+ array.item+ '>' + array.item + '</label></div>');
   });
 
+  //save list html to local storage
+  var savePage = JSON.stringify($('#myList').html());
+  localStorage.setItem('newkey',savePage);
+  return false;
+
 }); // end click to generate list
+
 
 
 // strikethrough and move items when checked, alert when everything is packed
@@ -95,6 +114,11 @@ $('#myList').on('click', 'input:checkbox', function(){
    if ($('#myList input:checked').length == $('#myList input').length) {
      alert('Everything is packed!');
    }
+
+   //update list in local storage
+   var savePage = JSON.stringify($('#myList').html());
+   localStorage.setItem('newkey',savePage);
+   return false;
 });
 
 
@@ -104,7 +128,13 @@ $('#reset').click(function(){
   $('#list-header').addClass('hidden');
   $('#myList').html('');
   $('.trip-categories input').prop('checked', false);
+
+  //clear local storage
+  // window.localStorage.clear();
+  // location.reload();
+  // return false;
 });
+
 
 
 
