@@ -17,9 +17,7 @@ body {
 
 .checkbox label {
   padding-left: 0;
-  font-weight: 0;
 }
-
 
 h3 {
   margin-top: 0px;
@@ -31,14 +29,21 @@ h3 {
   margin-top: 10px;
 }
 
-
-#myList {
+#items-to-pack, #packed-items {
   margin: 0;
   padding-left: 40px;
+  padding-bottom: 20px;
+  list-style: none;
 }
 
+li label, li input{
+  cursor: pointer;
+}
 
-.packed label {
+label.checkbox {
+  font-weight: normal;
+}
+
+.packed {
   color: #85929E;
-  text-decoration: line-through;
 }

@@ -1,12 +1,19 @@
 $(document).ready(function(){
 
-// localStorage.clear();
+//localStorage.clear();
 
 // Check local storage and load list if it exists:
-if(localStorage.getItem('newkey')) {
-  var savedPage = JSON.parse(localStorage.getItem('newkey'));
-  $('#myList').html(savedPage);
+if(localStorage.getItem('notpacked')) {
+  var loadSavedItems = JSON.parse(localStorage.getItem('notpacked'));
   $('#list-header').removeClass();
+  $('#items-to-pack').html(loadSavedItems);
+}
+
+if(localStorage.getItem('packed')) {
+  var loadPackedItems = JSON.parse(localStorage.getItem('packed'));
+  $('#list-header2').removeClass();
+  $('#packed-items').html(loadPackedItems);
+  $('#packed-items input').prop('checked',true);
 }
 
 
@@ -70,8 +77,6 @@ $('#show-packlist').click(function(){
       selectedCategories.push($(this).val());
     }
   });
-  // check selected categories
-  // console.log(selectedCategories);
 
 
   //filter and return new array (filteredItems) with selected categories, returns all items that are true
@@ -82,60 +87,72 @@ $('#show-packlist').click(function(){
       return true;
     }
   });
-  //check filter
-  // console.log(filteredItems);
-
 
   //clear the list
-  $('#myList').html('');
+  $('#items-to-pack').html('');
 
   //show header
   $('#list-header').removeClass();
 
   //populate list with filtered array
   filteredItems.forEach(function (array) {
-    $('#myList').append('<div class="checkbox"><input type="checkbox" id='+ array.item + '><label for='+ array.item+ '>' + array.item + '</label></div>');
+    $('#items-to-pack').append('<li><label class="checkbox"><input type="checkbox">'+ ' ' + array.item + '</label></li>');
   });
 
-  //save list html to local storage
-  var savePage = JSON.stringify($('#myList').html());
-  localStorage.setItem('newkey',savePage);
-  return false;
+    //save list html to local storage
+    var savedItemsToPack = JSON.stringify($('#items-to-pack').html());
+    localStorage.setItem('notpacked', savedItemsToPack);
+    var savedPackedItems = JSON.stringify($('#packed-items').html());
+    localStorage.setItem('packed', savedPackedItems);
 
 }); // end click to generate list
 
 
-
 // strikethrough and move items when checked, alert when everything is packed
-$('#myList').on('click', 'input:checkbox', function(){
-   $(this).parent().toggleClass('packed', this.checked);
-   $(this).parent().appendTo('#myList');
+$('#items-to-pack').on('click', 'input:checkbox', function(){
+  console.log($(this).parent());
+  $(this).parent().parent().toggleClass('packed',this.checked);
+  $('#list-header2').removeClass();
+  $(this).parent().parent().appendTo('#packed-items');
 
-   if ($('#myList input:checked').length == $('#myList input').length) {
-     alert('Everything is packed!');
-   }
+  if ($('#items-to-pack input').length === 0) {
+    alert('Everything is packed!');
+  }
 
-   //update list in local storage
-   var savePage = JSON.stringify($('#myList').html());
-   localStorage.setItem('newkey',savePage);
-   return false;
+     //update list in local storage
+     var savedItemsToPack = JSON.stringify($('#items-to-pack').html());
+     localStorage.setItem('notpacked', savedItemsToPack);
+     var savedPackedItems = JSON.stringify($('#packed-items').html());
+     localStorage.setItem('packed', savedPackedItems);
 });
 
+
+//move back to items-to-pack if unchecked
+$('#packed-items').on('click', 'input:checkbox', function(){
+  $(this).parent().parent().toggleClass('packed',this.checked);
+  $(this).parent().parent().appendTo('#items-to-pack');
+
+    //update list in local storage
+    var savedItemsToPack = JSON.stringify($('#items-to-pack').html());
+    localStorage.setItem('notpacked', savedItemsToPack);
+    var savedPackedItems = JSON.stringify($('#packed-items').html());
+    localStorage.setItem('packed', savedPackedItems);
+});
 
 
 // remove all items from packlist on reset click
 $('#reset').click(function(){
   $('#list-header').addClass('hidden');
-  $('#myList').html('');
+  $('#list-header2').addClass('hidden');
+  $('#items-to-pack').html('');
+  $('#packed-items').html('');
   $('.trip-categories input').prop('checked', false);
 
-  //clear local storage
-  // window.localStorage.clear();
-  // location.reload();
-  // return false;
+    //clear local storage
+    window.localStorage.clear();
+    location.reload();
+
 });
-
-
 
 
 
