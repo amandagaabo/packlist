@@ -36,7 +36,7 @@ h3 {
   list-style: none;
 }
 
-li label, li input{
+li label span, input{
   cursor: pointer;
 }
 

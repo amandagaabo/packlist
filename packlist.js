@@ -96,7 +96,7 @@ $('#show-packlist').click(function(){
 
   //populate list with filtered array
   filteredItems.forEach(function (array) {
-    $('#items-to-pack').append('<li><label class="checkbox"><input type="checkbox">'+ ' ' + array.item + '</label></li>');
+    $('#items-to-pack').append('<li><label class="checkbox"><input type="checkbox"><span>'+ ' ' + array.item + '</span></label></li>');
   });
 
     //save list html to local storage
