@@ -6,6 +6,7 @@ $(document).ready(function(){
 if(localStorage.getItem('notpacked')) {
   var loadSavedItems = JSON.parse(localStorage.getItem('notpacked'));
   $('#list-header').removeClass();
+  $('#add-items').removeClass();
   $('#items-to-pack').html(loadSavedItems);
 }
 
@@ -66,6 +67,8 @@ var allItems = [
 ];
 
 
+var userAddedItems = [];
+
 // add items to packlist on click
 $('#show-packlist').click(function(){
 
@@ -99,6 +102,9 @@ $('#show-packlist').click(function(){
     $('#items-to-pack').append('<li><label class="checkbox"><input type="checkbox"><span>'+ ' ' + array.item + '</span></label></li>');
   });
 
+  // show add item section
+  $('#add-items').removeClass();
+
     //save list html to local storage
     var savedItemsToPack = JSON.stringify($('#items-to-pack').html());
     localStorage.setItem('notpacked', savedItemsToPack);
@@ -107,6 +113,19 @@ $('#show-packlist').click(function(){
 
 }); // end click to generate list
 
+
+// add item
+
+$('#additional-item-btn').click(function(){
+  var newItem = $('#additional-item').val();
+  $('#items-to-pack').append('<li><label class="checkbox"><input type="checkbox"><span>'+ ' ' + newItem + '</span></label></li>');
+
+  //save list html to local storage
+  var savedItemsToPack = JSON.stringify($('#items-to-pack').html());
+  localStorage.setItem('notpacked', savedItemsToPack);
+  var savedPackedItems = JSON.stringify($('#packed-items').html());
+  localStorage.setItem('packed', savedPackedItems);
+});
 
 // strikethrough and move items when checked, alert when everything is packed
 $('#items-to-pack').on('click', 'input:checkbox', function(){

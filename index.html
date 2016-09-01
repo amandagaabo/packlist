@@ -8,8 +8,6 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link href="style.css" rel="stylesheet">
-
-
 </head>
 
 <body>
@@ -71,22 +69,27 @@
 
 
 <!-- List of items to pack -->
-<div>
-  <h3 class='hidden' id='list-header'>Items to Pack</h3>
-    <ul id='items-to-pack'></ul>
+  <div>
+    <h3 class='hidden' id='list-header'>Items to Pack</h3>
+      <ul id='items-to-pack'></ul>
+  </div>
+
+  <div class ='hidden' id='add-items'>
+
+    <div class="col-xs-6">
+      <label for="additional-item">Add Item</label>
+      <input type="text" class="form-control" id='additional-item' placeholder='new item'>
+    </div>
+    <div>
+      <button type="button" class="btn btn-default" id='additional-item-btn'>Submit</button>
+    </div>
+
+  <div>
+    <h3 class='hidden' id='list-header2'>Packed</h3>
+      <ul id='packed-items'></ul>
+  </div>
+
 </div>
-
-<div>
-  <h3 class='hidden' id='list-header2'>Packed</h3>
-    <ul id='packed-items'></ul>
-</div>
-
-
-
-</div>
-
-
-
 
 
 <!-- Footer -->
