@@ -25,8 +25,8 @@ h3 {
 }
 
 .btn {
-  margin-bottom: 40px;
-  margin-top: 10px;
+  margin-bottom: 35px;
+  margin-top: 25px;
 }
 
 #items-to-pack, #packed-items {
@@ -46,4 +46,8 @@ label.checkbox {
 
 .packed {
   color: #85929E;
+}
+
+p {
+  font-weight: normal;
 }
