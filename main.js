@@ -114,18 +114,26 @@ $('#show-packlist').click(function(){
 }); // end click to generate list
 
 
-// add item
-
+//add item on click
 $('#additional-item-btn').click(function(){
   var newItem = $('#additional-item').val();
-  $('#items-to-pack').append('<li><label class="checkbox"><input type="checkbox"><span>'+ ' ' + newItem + '</span></label></li>');
+  console.log(newItem);
+  if (newItem === '') {
+    alert('Please enter an item to add');
+  }else {
+    $('#items-to-pack').append('<li><label class="checkbox"><input type="checkbox"><span>'+ ' ' + newItem + '</span></label></li>');
+    $('#additional-item').val('');
 
   //save list html to local storage
   var savedItemsToPack = JSON.stringify($('#items-to-pack').html());
   localStorage.setItem('notpacked', savedItemsToPack);
   var savedPackedItems = JSON.stringify($('#packed-items').html());
   localStorage.setItem('packed', savedPackedItems);
+  }
+
 });
+
+
 
 // strikethrough and move items when checked, alert when everything is packed
 $('#items-to-pack').on('click', 'input:checkbox', function(){
